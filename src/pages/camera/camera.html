@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+     <ion-title>Camera</ion-title>
+    </ion-navbar>    
+</ion-header>
+
+
+<ion-content padding>
+  <ion-toolbar fixed>   
+    </ion-toolbar>
+    <ion-card>
+      <ion-card-content>
+        <span>
+          <label>Please select the processing option</label>
+        <select>
+  <option *ngFor="let label of labels" value= {{label.name}}>
+    {{label.name}}
+  </option>
+</select>
+        </span>
+<span>
+<label>Please select the output language</label>
+<select>
+  <option *ngFor="let language of languages" value= {{language.language}}>
+    {{language.language}}
+  </option>
+</select>
+</span>
+      </ion-card-content>
+    </ion-card>
+    <button (click)='takePhoto()' ion-button outline block>Take a photo</button> 
+    <button (click)='getGalleryPicture()' ion-button outline block>Gallery</button> 
+    
+<ion-card *ngFor='let photo of photos'>
+  <ion-card-content>
+    <img [src] = 'photo.src'>
+    <button (click)='likePhoto(photo)' ion-button block>
+      <ion-icon name='heart'></ion-icon>
+      <ion-icon item-right> {{photo.likes}} </ion-icon>
+    </button>
+    <button (click)='removePhoto(photo)' ion-button color='danger' block>
+      <ion-icon name='trash'></ion-icon>
+    </button>
+  </ion-card-content>
+</ion-card>
+</ion-content>
